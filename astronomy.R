@@ -17,4 +17,12 @@ stars %>% ggplot(aes(magnitude)) + geom_density()
 
 stars %>% ggplot(aes(temp)) + geom_density()
 
-stars %>% ggplot(aes(x=temp, y=magnitude)) + geom_point()
+stars %>% ggplot(aes(x=temp, y=magnitude, color=temp)) + geom_point()
+
+stars %>% ggplot(aes(x=log10(temp), y=magnitude, color=temp)) + geom_point() + scale_y_reverse() + scale_x_reverse()
+
+
+stars %>% filter(type=="G") %>% ggplot(aes(x=log10(temp), y=magnitude, color=temp)) + geom_point() + scale_y_reverse() + scale_x_reverse()
+
+
+stars %>%  ggplot(aes(x=log10(temp), y=magnitude, color=type)) + geom_point(size=3) + scale_y_reverse() + scale_x_reverse()
