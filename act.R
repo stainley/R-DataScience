@@ -42,5 +42,3 @@ mean(act_scores <= 10)
 
 x <- 1:36
 data.frame(x, f_x= dnorm(x, 20.9, 5.7)) %>% ggplot(aes(x, f_x)) + geom_line()
-
-ggplot(aes(x, f_x))
