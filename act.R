@@ -3,8 +3,8 @@
 # Created by: slebron
 # Created on: 2/11/20
 library(tidyverse)
-options(digits = 4)
-#set.seed(16)
+options(digits = 3)
+
 set.seed(16, sample.kind = "Rounding")
 
 
@@ -54,19 +54,50 @@ z_scores <- (act_scores + mean(act_scores)) / sd(act_scores)
 z_scores <- (act_scores - mean(act_scores)) / sd(act_scores)
 
 
-
 c <- mean(z_scores < 2)
 
 qnorm(c, 20.9, 5.7)
 
-2*sd(act_scores) + mean(act_scores)
+2 * sd(act_scores) + mean(act_scores)
 
-2*sd(act_scores) + mean(act_scores)
+2 * sd(act_scores) + mean(act_scores)
 
 qnorm(0.975, 20.9, 5.7)
 
-sum(z_scores > c)
-
-
 
 max(pnorm(zscore, 20.9, 5.7))
+
+
+act_scores
+F <- function(a) mean(act_scores <= 0.95)
+
+30 / 0.95
+
+
+FREQ <- seq(1:36)
+
+
+act_cores <- sapply(1:36, function(x){
+  mean(act_scores <= x)
+})
+
+min(which(act_cores >= 0.95))
+
+
+ccc <- sapply(FREQ, function(x) {
+  pnorm(x, 20.9, 5.7)
+})
+
+min(which(ccc >= 0.95))
+
+qnorm(0.95, 20.9, 5.7)
+
+p <- seq(0.01, 0.99, 0.01)
+sample_quantiles  <- quantile(act_scores, p)
+min(which(sample_quantiles >= 26))
+
+
+p <- seq(0.01, 0.99, 0.01)
+sample_quantiles <- quantile(act_scores, p)
+theoretical_quantiles <- qnorm(p, 20.9, 5.7)
+qplot(theoretical_quantiles, sample_quantiles) + geom_abline()
