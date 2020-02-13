@@ -4,7 +4,7 @@
 # Created on: 2/11/20
 library(tidyverse)
 options(digits = 4)
-set.seed(16)
+#set.seed(16)
 set.seed(16, sample.kind = "Rounding")
 
 
