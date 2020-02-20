@@ -132,3 +132,26 @@ S <- replicate(B, {
 
 
 mean(S < -10^6)
+
+#6
+n <- 1000
+p <- 0.015
+l <- -150000
+z <- qnorm(0.05)
+
+
+x <- abs(l * (n * p - z * sqrt(n*p*(1-p))) / (n * (1-p) + z * sqrt(n*p*(1-p))))
+
+mu <- l*p + x*(1-p)
+n*mu
+set.seed(28, sample.kind = "Rounding")
+
+B <- 10000
+
+S <- replicate(B, {
+  draw <- sample(c(l, x), n, replace = TRUE, prob = c(p, 1-p))
+  sum(draw)
+})
+
+mean(S < 0)
+
